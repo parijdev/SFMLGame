@@ -5,7 +5,7 @@ void Player::initVariables()
 {
 	this->attacking = false;
 	this->attackDirection = true;
-	this->idleTimer = 0.f; // ������ �����������
+	this->idleTimer = 0.f;
 	this->idleSpecialAnimation = false;
 }
 
@@ -25,10 +25,22 @@ Player::Player(float x, float y, sf::Texture& texture_sheet)
 	this->createMovementComponent(300.f, 15.f, 5.f);
 	this->createAnimationComponent(texture_sheet);
 
-	this->animationComponent->addAnimation("IDLE", 11.f, 0, 0, 3, 0, 576, 384);
-	this->animationComponent->addAnimation("WALK", 6.f, 0, 0, 3, 0, 576, 384);
-	this->animationComponent->addAnimation("IDLE_JUMP", 9.f, 1, 1, 5, 1, 576, 384);
-	this->animationComponent->addAnimation("ATTACK", 6.f, 0, 2, 12, 2, 576, 384);
+	this->animationComponent->addAnimation("IDLE", 11.f,
+                                           0, 0,
+                                           3, 0,
+                                           576, 384);
+	this->animationComponent->addAnimation("WALK", 3.f,
+                                           0, 0,
+                                           3, 0,
+                                           576, 384);
+	this->animationComponent->addAnimation("IDLE_JUMP", 9.f,
+                                           1, 1,
+                                           5, 1,
+                                           576, 384);
+	this->animationComponent->addAnimation("ATTACK", 6.f,
+                                           0, 2,
+                                           12, 2,
+                                           576, 384);
 }
 
 Player::~Player()
@@ -73,33 +85,28 @@ void Player::updateAnimations(const float& dt)
 		}
 	}
 
-	// ���� �������� ������������
+
 	if (this->movementComponent->getState(IDLE))
 	{
-		// ����������� ������ �����������
+
 		this->idleTimer += dt;
 
-		// ���� ������ ������ ������ � �������� IDLE_JUMP ��� �� ����������������
 		if (this->idleTimer >= 10.f && !this->idleSpecialAnimation)
 		{
-			// ������������� �������� IDLE_JUMP
 			if (this->animationComponent->play("IDLE_JUMP", dt))
 			{
-				// ���� �������� ���������, ���������� ���� � ������
 				this->idleSpecialAnimation = false;
 				this->idleTimer = 0.f;
 			}
 		}
 		else if (this->idleTimer < 10.f)
 		{
-			// ������������� ������� �������� IDLE
 			this->animationComponent->play("IDLE", dt);
 		}
 	}
 	else
 	{
 
-		// ��������� �������� ��������
 		if (this->movementComponent->getState(MOVING_LEFT) && !this->attacking)
 		{
 			if (this->sprite.getScale().x < 0.f)
@@ -108,7 +115,9 @@ void Player::updateAnimations(const float& dt)
 				this->sprite.setScale(1.f, 1.f);
 			}
 			this->idleTimer = 0.f;
-			this->animationComponent->play("WALK", dt, this->movementComponent->getVelocity().x, this->movementComponent->getMaxVelocity());
+			this->animationComponent->play("WALK", dt,
+                                           this->movementComponent->getVelocity().x,
+                                           this->movementComponent->getMaxVelocity());
 		}
 		else if (this->movementComponent->getState(MOVING_RIGHT) && !this->attacking)
 		{
@@ -118,12 +127,16 @@ void Player::updateAnimations(const float& dt)
 				this->sprite.setScale(-1.f, 1.f);
 			}
 			this->idleTimer = 0.f;
-			this->animationComponent->play("WALK", dt, this->movementComponent->getVelocity().x, this->movementComponent->getMaxVelocity());
+			this->animationComponent->play("WALK", dt,
+                                           this->movementComponent->getVelocity().x,
+                                           this->movementComponent->getMaxVelocity());
 		}
 		else if (this->movementComponent->getState(MOVING_UP) || this->movementComponent->getState(MOVING_DOWN))
 		{
 			this->idleTimer = 0.f;
-			this->animationComponent->play("WALK", dt, this->movementComponent->getVelocity().y, this->movementComponent->getMaxVelocity());
+			this->animationComponent->play("WALK", dt,
+                                           this->movementComponent->getVelocity().y,
+                                           this->movementComponent->getMaxVelocity());
 		}
 	}
 }

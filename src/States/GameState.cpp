@@ -22,7 +22,7 @@ void GameState::initKeybinds()
 
 void GameState::initFonts()
 {
-	if (!this->font.loadFromFile("assets/fonts/MavenPro-Regular.ttf"))
+	if (!this->font.loadFromFile("assets/fonts/ByteBounce.ttf"))
 	{
 		throw("ERROR::MAIN_MENU_STATE::COULD_NOT_LOAD_FONT");
 	}

@@ -13,7 +13,7 @@ void EditorState::initBackground()
 
 void EditorState::initFonts()
 {
-	if (!this->font.loadFromFile("assets/fonts/MavenPro-Regular.ttf"))
+	if (!this->font.loadFromFile("assets/fonts/ByteBounce.ttf"))
 	{
 		throw("ERROR::EDITOR_STATE::COULD_NOT_LOAD_FONT");
 	}

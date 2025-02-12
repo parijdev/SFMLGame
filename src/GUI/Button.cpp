@@ -2,7 +2,7 @@
 
 
 
-Button::Button(float x, float y, float width, float height,
+Button::Button(float x, float y, float y_h, float width, float height,
 	sf::Font* font, std::string text, unsigned character_size,
 	sf::Color text_idle_color, sf::Color text_hover_color, sf::Color text_active_color,
 	sf::Color idle_color, sf::Color hover_color, sf::Color active_color)
@@ -21,7 +21,7 @@ Button::Button(float x, float y, float width, float height,
 	this->text.setCharacterSize(character_size);
 	this->text.setPosition(
 		this->shape.getPosition().x + (this->shape.getGlobalBounds().width / 2.f) - this->text.getGlobalBounds().width /2.f,
-		this->shape.getPosition().y + (this->shape.getGlobalBounds().height / 2.f) - this->text.getGlobalBounds().height / 1.3f
+		this->shape.getPosition().y + (this->shape.getGlobalBounds().height / 2.f) - y_h
 	);
 
 	this->textIdleColor = text_idle_color;
