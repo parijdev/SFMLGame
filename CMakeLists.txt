@@ -7,8 +7,9 @@ add_executable(TestSFMLGame src/main.cpp src/Components/AnimationComponent.cpp s
         src/States/GameState.cpp src/Components/HitboxComponent.cpp src/States/MainMenuState.cpp src/Components/MovementComponent.cpp src/GUI/PauseMenu.cpp src/Entities/Player.cpp src/States/State.cpp src/Tile/Tile.cpp
         headers/Components/AnimationComponent.h headers/GUI/Gui.h headers/States/EditorState.h headers/Entities/Entity.h headers/Game.h
         headers/States/GameState.h headers/Components/HitboxComponent.h headers/States/MainMenuState.h headers/Components/MovementComponent.h headers/GUI/PauseMenu.h headers/Entities/Player.h headers/States/State.h headers/Tile/Tile.h
-        src/States/SettingsState.cpp
-        headers/States/SettingsState.h
+        src/States/SettingsState.cpp headers/States/SettingsState.h src/Map/TileMap.cpp headers/Map/TileMap.h
+        headers/stdafx.h
+        src/stdafx.cpp
 )
 
 include_directories(headers /usr/include c:/SFML/include)
@@ -32,4 +33,13 @@ if(WIN32)
     file(COPY ${BINARY_DEP_DLLS} DESTINATION ${CMAKE_BINARY_DIR})
     file(GLOB MINGW_DEP_DLLS "C:/mingw64/bin/*.dll")
     file(COPY ${MINGW_DEP_DLLS} DESTINATION ${CMAKE_BINARY_DIR})
+endif()
+
+# Precompiled Headers
+if (MSVC)
+    # MSVC (Visual Studio)
+    target_precompile_headers(TestSFMLGame PRIVATE headers/stdafx.h)
+else()
+    # GCC/Clang
+    target_precompile_headers(TestSFMLGame PRIVATE headers/stdafx.h)
 endif()

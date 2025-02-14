@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "States/SettingsState.h"
 
 void SettingsState::initVariables()

@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "States/MainMenuState.h"
 
 //Inititalizer functions
@@ -53,10 +54,10 @@ void MainMenuState::initKeybinds()
 
 void MainMenuState::initButtons()
 {
-    float x = this->background.getPosition().x + this->background.getSize().x / 2.f - 250 / 2.f;
+    float x = this->background.getPosition().x + this->background.getSize().x / 2.f;
 
 	this->buttons["GAME_STATE"] = new GUI::Button(
-		x, 600.f,85.f, 250.f, 50.f,
+		x - 235.f, 600.f,85.f, 470.f, 50.f,
 		&this->font, "New Game", 125.f,
 		sf::Color(130, 130, 130, 225),
         sf::Color(250, 250, 250, 250),
@@ -66,7 +67,7 @@ void MainMenuState::initButtons()
         sf::Color(20, 20, 20, 0));
 
 	this->buttons["SETTINGS_STATE"] = new GUI::Button(
-		x, 740.f,60.f, 250.f, 50.f,
+		x - 125.f, 740.f,60.f, 250.f, 50.f,
 		&this->font, "Settings", 80.f,
 		sf::Color(110, 110, 110, 225),
         sf::Color(250, 250, 250, 250),
@@ -76,7 +77,7 @@ void MainMenuState::initButtons()
         sf::Color(20, 20, 20, 0));
 
 	this->buttons["EDITOR_STATE"] = new GUI::Button(
-		x, 820.f,50.f, 250.f, 50.f,
+		x - 100.f, 820.f,50.f, 200.f, 50.f,
 		&this->font, "Editor", 80.f,
 		sf::Color(110, 110, 110, 225),
         sf::Color(250, 250, 250, 250),
@@ -86,7 +87,7 @@ void MainMenuState::initButtons()
         sf::Color(20, 20, 20, 0));
 
 	this->buttons["EXIT_STATE"] = new GUI::Button(
-		x, 920.f,60.f, 250.f, 50.f,
+		x - 70.f, 920.f,60.f, 140.f, 50.f,
 		&this->font, "Quit", 80.f,
 		sf::Color(110, 110, 110, 225),
         sf::Color(250, 250, 250, 250),

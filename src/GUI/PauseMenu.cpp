@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "GUI/PauseMenu.h"
 
 PauseMenu::PauseMenu(sf::RenderWindow &window, sf::Font &font)
@@ -54,13 +55,13 @@ const bool PauseMenu::isButtonPressed(const std::string key) {
 }
 
 void PauseMenu::addButton(const std::string key, float y, const std::string text) {
-    float width = 250.f;
+    float width = 120.f;
     float height = 40.f;
     float x = this->container.getPosition().x + this->container.getSize().x / 2.f - width / 2.f;
 
     this->buttons[key] = new GUI::Button(
-        x, y,30.f, width, height,
-            &this->font, text, 50,
+        x, y,50.f, width, height,
+            &this->font, text, 80,
             sf::Color(70, 70, 70, 200),
             sf::Color(250, 250, 250, 250),
             sf::Color(20, 20, 20, 50),
