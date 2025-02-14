@@ -3,10 +3,12 @@ project(TestSFMLGame)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(TestSFMLGame src/main.cpp src/Components/AnimationComponent.cpp src/GUI/Button.cpp src/States/EditorState.cpp src/Entities/Entity.cpp src/Game.cpp
+add_executable(TestSFMLGame src/main.cpp src/Components/AnimationComponent.cpp src/GUI/Gui.cpp src/States/EditorState.cpp src/Entities/Entity.cpp src/Game.cpp
         src/States/GameState.cpp src/Components/HitboxComponent.cpp src/States/MainMenuState.cpp src/Components/MovementComponent.cpp src/GUI/PauseMenu.cpp src/Entities/Player.cpp src/States/State.cpp src/Tile/Tile.cpp
-        headers/Components/AnimationComponent.h headers/GUI/Button.h headers/States/EditorState.h headers/Entities/Entity.h headers/Game.h
+        headers/Components/AnimationComponent.h headers/GUI/Gui.h headers/States/EditorState.h headers/Entities/Entity.h headers/Game.h
         headers/States/GameState.h headers/Components/HitboxComponent.h headers/States/MainMenuState.h headers/Components/MovementComponent.h headers/GUI/PauseMenu.h headers/Entities/Player.h headers/States/State.h headers/Tile/Tile.h
+        src/States/SettingsState.cpp
+        headers/States/SettingsState.h
 )
 
 include_directories(headers /usr/include c:/SFML/include)
