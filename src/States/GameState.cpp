@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "States/GameState.h"
 
+
 //Inititalizer functions
 void GameState::initKeybinds()
 {
@@ -48,21 +49,29 @@ void GameState::initPlayers()
 	this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
 }
 
+void GameState::initTileMap()
+{
+    this->tileMap = new TileMap(this->stateData->gridSize, 10, 10);
+}
+
+
 //constructors / destructors
-GameState::GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
-	: State(window, supportedKeys, states)
+GameState::GameState(StateData* state_data)
+	: State(state_data)
 {
 	this->initKeybinds();
 	this->initFonts();
 	this->initTextures();
 	this->initPauseMenu();
 	this->initPlayers();
+    this->initTileMap();
 }
 
 GameState::~GameState()
 {
 	delete this->player;
 	delete this->pmenu;
+    delete this->tileMap;
 }
   
 
@@ -122,6 +131,8 @@ void GameState::render(sf::RenderTarget* target)
 	if (!target)
 		target = this->window;
 
+    //this->map.render(*target);
+
 	this->player->render(*target);
 	
 	if (this->paused) // pause menu render
@@ -129,3 +140,4 @@ void GameState::render(sf::RenderTarget* target)
 		this->pmenu->render(*target);
 	}
 }
+

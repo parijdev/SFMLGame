@@ -89,7 +89,7 @@ void Player::updateAnimations(const float& dt)
 
 	if (this->movementComponent->getState(IDLE))
 	{
-
+        //this->sprite.set
 		this->idleTimer += dt;
 
 		if (this->idleTimer >= 10.f && !this->idleSpecialAnimation)

@@ -10,6 +10,8 @@ add_executable(TestSFMLGame src/main.cpp src/Components/AnimationComponent.cpp s
         src/States/SettingsState.cpp headers/States/SettingsState.h src/Map/TileMap.cpp headers/Map/TileMap.h
         headers/stdafx.h
         src/stdafx.cpp
+        src/GUI/GraphicsSettings.cpp
+        headers/GUI/GraphicsSettings.h
 )
 
 include_directories(headers /usr/include c:/SFML/include)
@@ -25,6 +27,7 @@ endif()
 file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY assets/fonts DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY assets/images/backgrounds DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY assets/images/tiles DESTINATION ${CMAKE_BINARY_DIR})
 
 
 # Copy dlls to build
