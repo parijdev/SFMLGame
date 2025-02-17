@@ -80,6 +80,33 @@ namespace GUI
         void render(sf::RenderTarget& target);
     };
 
+    class TextureSelector
+    {
+    private:
+        float gridSize;
+        bool active;
+        bool hidden;
+        GUI::Button* hide_btn;
+        sf::RectangleShape bounds;
+        sf::Sprite sheet;
+        sf::RectangleShape selector;
+        sf::Vector2u mousePosGrid;
+        sf::IntRect textureRect;
+
+
+    public:
+        TextureSelector(float x, float y, float width, float height, float gridSize,
+                        const sf::Texture* texture_sheet, sf::Font& font, std::string text);
+        ~TextureSelector();
+
+        //Accessors
+        const bool& getActive() const;
+        const sf::IntRect& getTextureRect() const;
+
+        //Functions
+        void update(const sf::Vector2i& mousePosWindow );
+        void render(sf::RenderTarget& target);
+    };
 }
 
 
