@@ -10,7 +10,9 @@ State::State(StateData* state_data)
 	this->quit = false;
 	this->paused = false;
     this->keytime = 0.f;
-    this->keytimeMax = 10.f;
+    this->keytimeMax = 1.f;
+    this->pauseKeytime = 0.f;
+    this->pauseKeytimeMax = 25.f;
     this->gridSize = state_data->gridSize;
 }
 
@@ -29,6 +31,15 @@ const bool State::getKeytime() {
     if(this->keytime >= this->keytimeMax)
     {
         this->keytime = 0.f;
+        return true;
+    }
+    return false;
+}
+
+const bool State::getPauseKeytime() {
+    if(this->pauseKeytime >= this->pauseKeytimeMax)
+    {
+        this->pauseKeytime = 0.f;
         return true;
     }
     return false;
@@ -66,6 +77,12 @@ void State::updateKeytime(const float& dt)
 {
     if(this->keytime < this->keytimeMax)
         this->keytime += 80.f * dt;
+}
+
+void State::updatePauseKeytime(const float& dt)
+{
+    if(this->pauseKeytime < this->pauseKeytimeMax)
+        this->pauseKeytime += 80.f * dt;
 }
 
 

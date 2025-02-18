@@ -51,7 +51,7 @@ void GameState::initPlayers()
 
 void GameState::initTileMap()
 {
-    this->tileMap = new TileMap(this->stateData->gridSize, 10, 10);
+    this->tileMap = new TileMap(this->stateData->gridSize, 10, 10, "assets/images/tiles/mud_grass_transition.png");
 }
 
 
@@ -77,7 +77,7 @@ GameState::~GameState()
 
 void GameState::updateInput(const float& dt)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))) && this->getKeytime())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))) && this->getPauseKeytime())
 	{
 		if (!this->paused)
 			this->pauseState();
@@ -112,6 +112,7 @@ void GameState::update(const float& dt)
 	this->updateMousePositions();
     this->updateKeytime(dt);
 	this->updateInput(dt);
+    this->updatePauseKeytime(dt);
 
 	if(!this->paused) //UNPAUSED update
 	{

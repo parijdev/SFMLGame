@@ -58,7 +58,7 @@ namespace GUI
     {
     private:
         float keytime;
-        float keytimeMax;
+        const float keytimeMax;
         sf::Font& font;
         GUI::Button* activeElement;
         std::vector<GUI::Button*> list;
@@ -83,6 +83,8 @@ namespace GUI
     class TextureSelector
     {
     private:
+        float keytime;
+        const float keytimeMax;
         float gridSize;
         bool active;
         bool hidden;
@@ -104,7 +106,9 @@ namespace GUI
         const sf::IntRect& getTextureRect() const;
 
         //Functions
-        void update(const sf::Vector2i& mousePosWindow );
+        const bool getKeytime();
+        void updateKeytime(const float& dt);
+        void update(const sf::Vector2i& mousePosWindow, const float& dt);
         void render(sf::RenderTarget& target);
     };
 }

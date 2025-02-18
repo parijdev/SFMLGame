@@ -16,6 +16,9 @@ class EditorState :
 {
 private:
     //Variables
+    float keytime;
+    const float keytimeMax;
+
     sf::Font font;
     sf::Text cursorText;
     PauseMenu* pmenu;
@@ -24,10 +27,14 @@ private:
 
     TileMap* tileMap;
 
+    sf::RectangleShape sidebar;
+
     sf::IntRect textureRect;
     sf::RectangleShape selectorRect;
 
     GUI::TextureSelector* textureSelector;
+
+
 
     //Functions
     void initVariables();
@@ -45,11 +52,15 @@ public:
     EditorState(StateData* state_data);
     virtual ~EditorState();
 
+    //Accessors
+    const bool getKeytime();
+
     //Functions
+    void updateKeytime(const float& dt);
     void updateInput(const float& dt);
     void updateEditorInput(const float& dt);
     void updateButtons();
-    void updateGui();
+    void updateGui(const float& dt);
     void updatePauseMenuButtons();
     void update(const float& dt);
     void renderButtons(sf::RenderTarget& target);

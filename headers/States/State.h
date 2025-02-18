@@ -36,6 +36,8 @@ protected:
 	bool paused;
     float keytime;
     float keytimeMax;
+    float pauseKeytime;
+    float pauseKeytimeMax;
     float gridSize;
 
 	sf::Vector2i mousePosScreen;
@@ -57,6 +59,8 @@ public:
     //Accessors
     const bool& getQuit() const;
     const bool getKeytime();
+    const bool getPauseKeytime();
+
 
     //Functions
 	void endState();
@@ -65,6 +69,7 @@ public:
 
 	virtual void updateMousePositions();
     virtual void updateKeytime(const float& dt);
+    virtual void updatePauseKeytime(const float& dt); // update keytime for pause button
 	virtual void updateInput(const float& dt) = 0;
 	virtual void update(const float& dt) = 0;
 	virtual void render(sf::RenderTarget* target = NULL) = 0;
